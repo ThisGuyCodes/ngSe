@@ -1,4 +1,4 @@
-# NgSe
+# ngSe
 Pronounced: en-gee-see
 
 NgSe is a browser abstractrion on top of the Selenium driver, designed specifically to ease testing of apps using heavy asynchronous javascript DOM manipulation (specifically, AngularJS).
