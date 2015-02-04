@@ -286,7 +286,7 @@ class AppPage(object):
         return self._page
 
 
-class NgBrowser(Chrome):
+class Browser(Chrome):
     executable_path = '/usr/local/bin/chromedriver'
     app_host = 'localhost'
     app_port = 5000
@@ -317,12 +317,12 @@ class NgBrowser(Chrome):
         if executable_path is not None:
             self.executable_path = executable_path
         self.pages = pages
-        super(NgBrowser, self).__init__(executable_path=self.executable_path, chrome_options=options)
+        super(Browser, self).__init__(executable_path=self.executable_path, chrome_options=options)
         register_exit(self.quit)
 
     def quit(self):
         try:
-            super(NgBrowser, self).quit()
+            super(Browser, self).quit()
         except URLError as e:
             if e.reason.errno == 61 or e.reason.errno == 111:
                 # 'Connection refused', this happens when the driver has already closed/quit
@@ -345,7 +345,7 @@ class NgBrowser(Chrome):
         # Contract
         must_be(url, "url", basestring)
         #
-        value = super(NgBrowser, self).get(url)
+        value = super(Browser, self).get(url)
         page_title = self.title
         if page_title in {'404 Not Found'}:
             raise NavigationError(page_title)
