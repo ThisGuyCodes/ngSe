@@ -274,7 +274,8 @@ class Browser(Chrome):
         sleep(hover_time)
         return chain.perform()
 
-    def _fill(self, element, text, by=By.ID, check=True, check_against=None, check_attribute="value", empty=False):
+    @staticmethod
+    def _fill(element, text, by=By.ID, check=True, check_against=None, check_attribute="value", empty=False):
         """Fills in a given element with the given text, optionally checking emptying it first and/or checking the
         contents after (optionally against a different value).
         """
