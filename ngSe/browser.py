@@ -25,7 +25,8 @@ class Browser(Chrome):
     app_host = 'localhost'
     app_port = 5000
 
-    def __init__(self, scenario, download_directory=download_directory, app_host=None, app_port=None, executable_path=None, pages=None):
+    def __init__(self, scenario, download_directory=download_directory, app_host=None, app_port=None,
+                 executable_path=None, pages=None):
         # Contract
         must_be(download_directory, "download_directory", (NoneType, basestring))
         must_be(app_host, "app_host", (NoneType, basestring))
