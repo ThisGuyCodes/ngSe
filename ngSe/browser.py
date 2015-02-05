@@ -313,21 +313,21 @@ class Browser(Chrome):
 
     @retry
     def wait_for_success(self):
-        notThereExceptions = (
+        not_there_exceptions = (
             selenium_exceptions.NoSuchElementException,
             selenium_exceptions.ElementNotVisibleException,
         )
 
         try:
             self.find_element_by_css_selector('.alertContainer .alert-warning')
-        except notThereExceptions:
+        except not_there_exceptions:
             pass
         else:
             raise FrontEndError('Warning alert is on screen')
 
         try:
             self.find_element_by_css_selector('.alertContainer .alert-danger')
-        except notThereExceptions:
+        except not_there_exceptions:
             pass
         else:
             raise FrontEndError('Danger alert is on screen')
