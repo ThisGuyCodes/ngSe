@@ -1,5 +1,5 @@
-from time import time, sleep
 from functools import wraps
+from time import time, sleep
 
 from .exceptions import element_exceptions
 
