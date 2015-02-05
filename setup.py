@@ -19,7 +19,7 @@ setup(
     # https://packaging.python.org/en/latest/single_source_version.html
     version=version,
 
-    description='A Selenium browser abstraction for modern apps',
+    description='A Selenium browser for javascript frameworks',
     long_description=long_description,
 
     # The project's main homepage.
