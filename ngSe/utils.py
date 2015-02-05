@@ -1,8 +1,6 @@
 from time import time, sleep
 from functools import wraps
 
-import selenium.common.exceptions as selenium_exceptions
-
 from .exceptions import element_exceptions
 
 
