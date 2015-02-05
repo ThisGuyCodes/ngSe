@@ -12,6 +12,7 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 
+from .contract import must_be
 
 download_directory = "./tmp"
 
@@ -92,20 +93,6 @@ def retry(f=None, timeout=30, interval=0.1):
                 sleep(retry_interval)
 
     return wrapper
-
-# TODO[TJ]: This can, and should, be sliced off into its own library
-def must_be(what, name, types):
-    if isinstance(what, types):
-        return True
-    if isinstance(types, tuple):
-        type_list = ", ".join([t.__name__ for t in types])
-    else:
-        type_list = types.__name__
-    raise ValueError(
-        "{what} must be of types ({list}), is of type {type}".format(
-            what=name,
-            list=type_list,
-            type=type(what)))
 
 
 class ByDict(dict):
