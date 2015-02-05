@@ -1,6 +1,6 @@
+from time import sleep
 from numbers import Number
 from types import NoneType
-from time import sleep
 from atexit import register as register_exit
 
 from urllib2 import URLError
@@ -10,11 +10,11 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 
-from .contract import must_be
-from .by import By, ByClause
 from .utils import retry
-from .exceptions import NavigationError, WaitFailedError, element_exceptions, DontRetryError, FrontEndError, cant_see_exceptions
 from .page import AppPage
+from .by import By, ByClause
+from .contract import must_be
+from .exceptions import NavigationError, WaitFailedError, element_exceptions, DontRetryError, FrontEndError, cant_see_exceptions
 
 download_directory = "./tmp"
 
