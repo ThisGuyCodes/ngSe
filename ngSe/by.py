@@ -2,8 +2,9 @@ from selenium.webdriver import Remote
 import selenium.common.exceptions as selenium_exceptions
 from selenium.webdriver.common.by import By as selenium_by
 
-from .browser import retry, cant_see_exceptions, ElementStillThereError
+from .utils import retry
 from .contract import must_be
+from .exceptions import cant_see_exceptions, ElementStillThereError
 
 
 class ByDict(dict):
