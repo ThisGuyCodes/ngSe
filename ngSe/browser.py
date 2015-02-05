@@ -17,7 +17,7 @@ from .contract import must_be
 from .exceptions import NavigationError, WaitFailedError, DontRetryError, FrontEndError
 from .exceptions import element_exceptions, cant_see_exceptions
 
-download_directory = "./tmp"
+default_download_directory = "./tmp"
 
 
 class Browser(Chrome):
@@ -25,7 +25,7 @@ class Browser(Chrome):
     app_host = 'localhost'
     app_port = 5000
 
-    def __init__(self, scenario, download_directory=download_directory, app_host=None, app_port=None,
+    def __init__(self, scenario, download_directory=default_download_directory, app_host=None, app_port=None,
                  executable_path=None, pages=None):
         # Contract
         must_be(download_directory, "download_directory", (NoneType, basestring))
