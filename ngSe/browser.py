@@ -144,10 +144,10 @@ class Browser(Chrome):
         must_be(app_port, "app_port", (NoneType, Number))
         must_be(executable_path, "executable_path", (NoneType, basestring))
         must_be(pages, "pages", dict)
-        # TODO[TJ]: This should be implimented as part of the future contracts library
         for key, value in pages.iteritems():
             must_be(key, "pages key", basestring)
             must_be(value, "pages value", AppPage)
+        # TODO[TJ]: This should be implemented as part of the future contracts library
         #
         self.scenario = scenario
         if download_directory is not None:
