@@ -3,7 +3,7 @@ from functools import wraps
 
 import selenium.common.exceptions as selenium_exceptions
 
-from .browser import element_exceptions
+from .exceptions import element_exceptions
 
 
 def retry(f=None, timeout=30, interval=0.1):
