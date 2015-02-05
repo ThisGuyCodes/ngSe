@@ -14,7 +14,8 @@ from .utils import retry
 from .page import AppPage
 from .by import By, ByClause
 from .contract import must_be
-from .exceptions import NavigationError, WaitFailedError, element_exceptions, DontRetryError, FrontEndError, cant_see_exceptions
+from .exceptions import NavigationError, WaitFailedError, DontRetryError, FrontEndError
+from .exceptions import element_exceptions, cant_see_exceptions
 
 download_directory = "./tmp"
 
