@@ -1,2 +1,2 @@
-from browser import Browser
-from by import By
+from .browser import Browser
+from .by import By
