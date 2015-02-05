@@ -137,17 +137,18 @@ class Browser(Chrome):
     app_host = 'localhost'
     app_port = 5000
 
-    def __init__(self, scenario, download_directory=None, app_host=None, app_port=None, executable_path=None, pages={}):
+    def __init__(self, scenario, download_directory=download_directory, app_host=None, app_port=None, executable_path=None, pages=None):
         # Contract
         must_be(download_directory, "download_directory", (NoneType, basestring))
         must_be(app_host, "app_host", (NoneType, basestring))
         must_be(app_port, "app_port", (NoneType, Number))
         must_be(executable_path, "executable_path", (NoneType, basestring))
-        must_be(pages, "pages", dict)
-        for key, value in pages.iteritems():
-            must_be(key, "pages key", basestring)
-            must_be(value, "pages value", AppPage)
+        must_be(pages, "pages", (dict, NoneType))
         # TODO[TJ]: This should be implemented as part of the future contracts library
+        if pages is not None:
+            for key, value in pages.iteritems():
+                must_be(key, "pages key", basestring)
+                must_be(value, "pages value", AppPage)
         #
         self.scenario = scenario
         if download_directory is not None:
