@@ -7,6 +7,7 @@ ngSe is a browser abstraction on top of the Selenium driver, designed specifical
 There are a lot of things left to do:
 
 - Have the adaptor work on other-than-chromedriver (might be my first dive into meta-classes and/or class factories :D)
+- Support Python 3
 - Slice out the design-by-contract stuff into a separate library (and expand it)
 - Figure out what is still fairly application specific, and remove/rework it.
 - Come up with a clear definition of responsibility: when to return values and when to raise exceptions.
