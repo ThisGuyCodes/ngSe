@@ -1,6 +1,6 @@
 from types import NoneType
 
-from .by import ByClause
+from .by import ByClause, By
 from .contract import must_be
 
 
