@@ -67,7 +67,9 @@ class Browser(Chrome):
                 raise
 
     def wait_for(self, value, by=By.ID):
-        """Waits for an element to appear on screen
+        """Waits for an element according to the passed ByClause
+
+        This is really just a wrapper around passing the browser to a ByClause, allowing for much cleaner syntax.
         """
         # Contract
         must_be(value, "value", basestring)
@@ -239,8 +241,3 @@ class Browser(Chrome):
     @retry
     def _text_is_present(self, text):
         self.find_element_by_tag_name('body').text.index(text)
-
-    @retry
-    def wait_for_element(self, value, by=By.CSS_SELECTOR):
-        must_be(by, "by", ByClause)
-        return by.wait(value, self)
