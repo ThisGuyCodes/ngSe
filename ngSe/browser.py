@@ -66,7 +66,7 @@ class Browser(Chrome):
             else:
                 raise
 
-    def wait_for(self, value, by=By.ID):
+    def wait_for(self, value, by=By.ID, **kwargs):
         """Waits for an element according to the passed ByClause
 
         This is really just a wrapper around passing the browser to a ByClause, allowing for much cleaner syntax.
@@ -75,7 +75,8 @@ class Browser(Chrome):
         must_be(value, "value", basestring)
         must_be(by, "by", ByClause)
         #
-        by.wait(value, self)
+
+        by.wait(value, self, **kwargs)
 
     def goto(self, url):
         """Wrapper to check for navigation issues, like 404's
