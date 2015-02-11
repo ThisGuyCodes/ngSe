@@ -199,7 +199,7 @@ class Browser(Chrome):
         must_be(check_attribute, "check_attribute", basestring)
         must_be(empty, "empty", bool)
         #
-        element = self.find_element(value=what, by=by)
+        element = by.find(what, self)
         return self._fill(element, text, by, check, check_against, check_attribute, empty)
 
     @retry
