@@ -76,7 +76,7 @@ class Browser(Chrome):
         must_be(by, "by", ByClause)
         #
 
-        by.wait(value, self, **kwargs)
+        return by.wait(value, self, **kwargs)
 
     def goto(self, url):
         """Wrapper to check for navigation issues, like 404's
