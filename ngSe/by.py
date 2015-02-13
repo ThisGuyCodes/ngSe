@@ -136,6 +136,42 @@ def _inner_text_convert(value):
     return '//*[contains(text(), "{}"){}]'.format(text, others)
 
 
+def _table_path_convert(path):
+    # Contract
+    must_be(path, "path", basestring)
+    #
+    parts = path.split('\\')
+    if len(parts) < 3:
+        raise ValueError("path value must be: table_path\\[row_type:]row\\[column_type:]column[\\cell_path]")
+
+    table_path = parts.pop()
+
+    row = parts.pop()
+    row_type = "tr"
+    data = row.split(":")
+    if len(data) == 1:
+        row = int(row)
+    else:
+        row_type = data[0]
+        row = int(data[1])
+
+    column = parts.pop()
+    column_type = "td"
+    data = column.split(":")
+    if len(data) == 1:
+        column = int(column)
+    else:
+        row_type = data[0]
+        column = int(data[1])
+
+    cell_path = ""
+    if len(parts) >= 1:
+        cell_path = "/" + parts.pop()
+
+    return '{tp}/{rt}[{r}]/{ct}[{c}]{cp}'.format(
+        tp=table_path, rt=row_type, r=row, ct=column_type, c=column, cp=cell_path)
+
+
 # Implement the class, add existing values
 By = ByDict()
 # Is this the best way to do this? Allow retrieving key: None = value: None (for simplifying step parsing)
@@ -145,6 +181,7 @@ for key, value in selenium_by.__dict__.iteritems():
         By[key] = ByClause(value, lambda v: v)
 
 By.INNER_TEXT = ByClause(selenium_by.XPATH, _inner_text_convert)
+By.TABLE_PATH = ByClause(selenium_by.XPATH, _table_path_convert)
 By.NG_CLICK = ByClause(selenium_by.CSS_SELECTOR, lambda v: '[ng-click="{}"]'.format(v))
 By.VISIBLE_CLICK = ByClause(selenium_by.CSS_SELECTOR, lambda v: '[ng-click="{}"]:not(.ng-hide)'.format(v))
 By.NG_MODEL = ByClause(selenium_by.CSS_SELECTOR, lambda v: '[ng-model="{}"]'.format(v))
