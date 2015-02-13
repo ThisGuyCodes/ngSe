@@ -51,7 +51,9 @@ class ByClause(object):
     appropriately.
     """
 
-    # TODO[TJ] make methods (convert, wait, find) officially defined as internal-only (prepend with a dunder). This will allow refactoring of how this is used within a browser without breaking 'proper' implimentaions. This may also require some warning to people implimenting custom ByClauses. There's a discussion here.
+    # TODO[TJ] make methods (convert, wait, find) officially defined as internal-only (prepend with a dunder).
+    # This will allow refactoring of how this is used within a browser without breaking 'proper' implimentaions.
+    # This may also require some warning to people implimenting custom ByClauses. There's a discussion here.
 
     def __init__(self, by, f):
         # Contract
