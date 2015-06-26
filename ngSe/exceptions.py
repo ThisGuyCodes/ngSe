@@ -47,6 +47,7 @@ element_exceptions = (
     selenium_exceptions.InvalidElementStateException,
     selenium_exceptions.NoSuchElementException,
     selenium_exceptions.ElementNotVisibleException,
+    selenium_exceptions.StaleElementReferenceException,
     ElementStillThereError,
     ValueError,
 )
